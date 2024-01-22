@@ -22,9 +22,13 @@ const ProductList = (props) => {
     setSkincare(groupedProducts["3"] || []);
   }, [props.products]);
   const deleteHandler=(deleteId)=>{
-    console.log(`delete called : ${deleteId}`)
+    console.log(`delete called : ${typeof(deleteId)}`)
 
-    props.products.filter(product=>product.id!==deleteId)
+    props.products.filter(product=>{
+      console.log(typeof(product.id))
+      return product.id!=deleteId.toString()
+    })
+    console.log(`${JSON.stringify(props.products)} after delete`)
     localStorage.removeItem(`${deleteId}`)
 
   }

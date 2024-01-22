@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from './Button/Button';
 const ListItem = props => {
-  const deleteHandler=(id)=>{
-    props.onDelete(id)
+  const deleteHandler=(event)=>{
+    props.onDelete(event.target.value)
   }
   return (
     <ul>
@@ -13,7 +13,7 @@ const ListItem = props => {
         //   onDelete={props.onDeleteItem}
         >
           {item.name}
-          <button onClick={deleteHandler} > Delete Product</button>
+          <button value={item.id} onClick={deleteHandler} > Delete Product</button>
         </li>
       ))}
     </ul>
