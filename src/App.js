@@ -22,10 +22,17 @@ function App() {
       return updatedList;
     });
   };
+  const deleteHandler=(deleteId)=>{
+    setProductList(prevState=>{
+      const updatedList = prevState.filter(item=>item.id!==deleteId)
+      return updatedList
+    })
+    localStorage.removeItem(deleteId)
+  }
   return (
     <React.Fragment>
       <InputForm onSubmit={onSubmitProduct} />
-      <ProductList products={productList}/>
+      <ProductList products={productList} onDeleteItem={deleteHandler}/>
     </React.Fragment>
   );
 }
